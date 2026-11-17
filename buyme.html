@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buyme</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f4f8;
+            color: #222;
+            font-size: 14px
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 12px
+        }
+
+
+        .header {
+            background: #0d47a1;
+            color: #fff;
+            padding: 14px 0
+        }
+
+        .header .wrap {
+            display: flex;
+            align-items: center;
+            gap: 24px
+        }
+
+        .logo {
+            font-size: 34px;
+            font-weight: bold;
+            letter-spacing: -1px
+        }
+
+        .logo span {
+            color: #ffc107
+        }
+
+        .search {
+            flex: 1;
+            background: #fff;
+            color: #888;
+            padding: 11px 14px;
+            border-radius: 4px
+        }
+
+        .header-links {
+            display: flex;
+            gap: 20px;
+            font-size: 13px
+        }
+
+        .cats {
+            background: #fff;
+            border-bottom: 1px solid #dde2ea;
+            padding: 12px 0
+        }
+
+        .cats .wrap {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            overflow: hidden
+        }
+
+        .cat {
+            text-align: center;
+            font-size: 12px;
+            color: #0d47a1;
+            min-width: 80px
+        }
+
+        .cat .ic {
+            width: 46px;
+            height: 46px;
+            margin: 0 auto 4px;
+            border-radius: 50%;
+            background: #e8f0fe;
+            font-size: 22px;
+            line-height: 46px
+        }
+
+        .nav {
+            background: #fff;
+            border-bottom: 1px solid #dde2ea
+        }
+
+        .nav .wrap {
+            display: flex;
+            gap: 22px;
+            padding: 10px 12px;
+            font-size: 13px;
+            color: #444;
+            overflow: hidden;
+            white-space: nowrap
+        }
+
+        .nav b {
+            color: #0d47a1
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 12px;
+            margin: 14px 0
+        }
+
+        .banner {
+            border-radius: 6px;
+            color: #fff;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .banner h1 {
+            font-size: 32px;
+            margin-bottom: 6px
+        }
+
+        .banner p {
+            font-size: 15px
+        }
+
+        .b1 {
+            background: linear-gradient(120deg, #0d47a1, #1e88e5);
+            min-height: 260px
+        }
+
+        .b2 {
+            background: linear-gradient(120deg, #e65100, #ff9800)
+        }
+
+        .b3 {
+            background: linear-gradient(120deg, #2e7d32, #66bb6a)
+        }
+
+        .side {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 12px
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0d47a1;
+            margin: 22px 0 10px
+        }
+
+        .tiles {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px
+        }
+
+        .tile {
+            border-radius: 6px;
+            padding: 20px 12px;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            min-height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .t1 {
+            background: #5c6bc0
+        }
+
+        .t2 {
+            background: #26a69a
+        }
+
+        .t3 {
+            background: #ef5350
+        }
+
+        .t4 {
+            background: #42a5f5
+        }
+
+        .t5 {
+            background: #8d6e63
+        }
+
+        .tiles.wide {
+            grid-template-columns: repeat(5, 1fr)
+        }
+
+        .tiles.wide .tile {
+            min-height: 150px
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e1e5ec;
+            border-radius: 6px;
+            padding: 12px
+        }
+
+        .photo {
+            height: 130px;
+            background: #eef1f6;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 56px;
+            line-height: 130px;
+            margin-bottom: 10px
+        }
+
+        .name {
+            font-size: 13px;
+            line-height: 18px;
+            height: 54px;
+            overflow: hidden;
+            color: #222
+        }
+
+        .fast {
+            display: inline-block;
+            font-size: 11px;
+            color: #2e7d32;
+            background: #e8f5e9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin: 8px 0
+        }
+
+        .price {
+            font-size: 17px;
+            font-weight: bold;
+            color: #111
+        }
+
+        .mrp {
+            font-size: 12px;
+            color: #888;
+            text-decoration: line-through;
+            margin-left: 6px;
+            font-weight: normal
+        }
+
+        .off {
+            font-size: 12px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin-left: 4px
+        }
+
+        .stock {
+            font-size: 12px;
+            color: #2e7d32;
+            margin-top: 6px
+        }
+
+        .promo {
+            background: linear-gradient(90deg, #0d47a1, #42a5f5);
+            color: #fff;
+            border-radius: 6px;
+            padding: 24px;
+            margin: 22px 0 0;
+            font-size: 20px;
+            font-weight: bold
+        }
+
+        .cols {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px
+        }
+
+        .cols h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 15px
+        }
+
+        .cols p {
+            margin-bottom: 6px;
+            font-size: 13px
+        }
+
+        .copy {
+            border-top: 1px solid #2a4a8f;
+            margin-top: 22px;
+            padding-top: 12px;
+            text-align: center;
+            font-size: 12px
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="header">
+        <div class="wrap">
+            <div class="logo">buy<span>me</span></div>
+            <input type="search" class="search">Search for mobiles, laptops, TVs and more</input>
+            <div class="header-links"><span>Sign in</span><span>Register</span><span>Cart</span></div>
+        </div>
+    </div>
+
+    <div class="cats">
+        <div class="wrap">
+
+            <a href="/mobilephone">
+                <div class="cat">
+                    <div class="ic">📱</div>Mobile Phones
+                </div>
+            </a>
+
+            <div class="cat">
+                <div class="ic">💻</div>Laptop
+            </div>
+            <div class="cat">
+                <div class="ic">📺</div>TV
+            </div>
+            <div class="cat">
+                <div class="ic">🎧</div>Accessories
+            </div>
+        </div>
+    </div>
+
+    <div class="nav">
+        <div class="wrap">
+            <span><b>Mobile Phones:</b></span>
+            <span>Apple</span><span>Samsung</span><span>Xiaomi</span><span>Vivo</span><span>Oppo</span>
+            <span>Realme</span><span>Tecno</span><span>Nothing</span><span>Google</span><span>OnePlus</span>
+            <span><b>Bajaj EMI</b></span>
+        </div>
+    </div>
+
+    <div class="wrap">
+
+        <div class="hero">
+            <div class="banner b1">
+                <h1>iPhone 18 Pro Series</h1>
+                <p>Now available at your nearest buyme store</p>
+            </div>
+            <div class="side">
+                <div class="banner b2">
+                    <h1 style="font-size:22px">Air Conditioners</h1>
+                    <p>Special HDFC offers</p>
+                </div>
+                <div class="banner b3">
+                    <h1 style="font-size:22px">Washing Machines</h1>
+                    <p>Festive offers</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="title">Deal of the Day</div>
+        <div class="tiles">
+            <div class="tile t1">Front Load Washing Machines</div>
+            <div class="tile t2">Refrigerator Offers</div>
+            <div class="tile t3">Smart TV Offers</div>
+            <div class="tile t4">Air Conditioner Offers</div>
+            <div class="tile t5">CP Plus Camera</div>
+        </div>
+
+        <div class="title">Latest Launches</div>
+        <div class="tiles wide">
+            <div class="tile t1">iPad mini A20 Pro</div>
+            <div class="tile t2">Oppo Find X10 Series</div>
+            <div class="tile t3">Vivo V80 Series</div>
+            <div class="tile t4">Samsung Galaxy S26 FE</div>
+            <div class="tile t5">Pixel 11 Series</div>
+        </div>
+
+        <div class="title">buyme Exclusives: Just Launched</div>
+        <div class="products">
+            <div class="card">
+                <div class="photo">📱</div>
+                <div class="name">Samsung Galaxy Z Fold8 5G | 12GB | 512GB | Lavender</div>
+                <div class="fast">2Fast Delivery</div>
+                <div class="price">₹187,999 <span class="mrp">₹224,999</span><span class="off">-16%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">📱</div>
+                <div class="name">Samsung Galaxy S26 5G | 12GB | 512GB | White</div>
+                <div class="fast">2Fast Delivery</div>
+                <div class="price">₹109,999 <span class="mrp">₹152,999</span><span class="off">-28%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">📱</div>
+                <div class="name">REDMI Note 15 Pro 5G | 8GB | 128GB | Carbon Black</div>
+                <div class="fast">2Fast Delivery</div>
+                <div class="price">₹31,999 <span class="mrp">₹43,999</span><span class="off">-27%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">📱</div>
+                <div class="name">Nothing Phone 4a | 8 GB | 128 GB | Blue</div>
+                <div class="fast">2Fast Delivery</div>
+                <div class="price">₹44,999 <span class="mrp">₹59,999</span><span class="off">-25%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">📱</div>
+                <div class="name">OPPO Find X10 5G | 12GB | 256GB | Glacier Blue</div>
+                <div class="fast">2Fast Delivery</div>
+                <div class="price">₹139,999 <span class="mrp">₹179,999</span><span class="off">-22%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+        </div>
+
+        <div class="title">Deals on Home Appliances</div>
+        <div class="promo">Air Conditioners – up to 47% off</div>
+        <div class="products" style="margin-top:12px">
+            <div class="card">
+                <div class="photo">❄️</div>
+                <div class="name">Hisense Inverter Split AC | 1.5 Ton | 3 Star | White</div>
+                <div class="price">₹29,990 <span class="mrp">₹45,000</span><span class="off">-33%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">❄️</div>
+                <div class="name">TCL Split Inverter AC | 1 Ton | 3 Star | White</div>
+                <div class="price">₹25,990 <span class="mrp">₹48,991</span><span class="off">-47%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">❄️</div>
+                <div class="name">Voltas Inverter Split AC | 2 Ton | 5 Star | White</div>
+                <div class="price">₹63,620 <span class="mrp">₹90,990</span><span class="off">-30%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">❄️</div>
+                <div class="name">IFB Inverter Split AC | 8 in 1 Flexi Mode | 2 Ton</div>
+                <div class="price">₹45,990 <span class="mrp">₹78,990</span><span class="off">-42%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">❄️</div>
+                <div class="name">Hitachi Convertible Inverter Split AC | 1 Ton | 3 Star</div>
+                <div class="price">₹29,990 <span class="mrp">₹56,990</span><span class="off">-47%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+        </div>
+
+        <div class="promo" style="background:linear-gradient(90deg,#2e7d32,#66bb6a)">Washing Machines – festive offers
+        </div>
+        <div class="products" style="margin-top:12px">
+            <div class="card">
+                <div class="photo">🧺</div>
+                <div class="name">LG Semi Automatic Top Load | 11 Kg | 5 Star | Middle Black</div>
+                <div class="price">₹23,390 <span class="mrp">₹27,990</span><span class="off">-16%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">🧺</div>
+                <div class="name">Lloyd Fully Automatic Top Load | 8 Kg | Copper Blush</div>
+                <div class="price">₹23,390 <span class="mrp">₹49,700</span><span class="off">-53%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">🧺</div>
+                <div class="name">LG Fully Automatic Front Load | 12 Kg | Matte Green</div>
+                <div class="price">₹66,590 <span class="mrp">₹93,990</span><span class="off">-29%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">🧺</div>
+                <div class="name">Haier Fully Automatic Front Load | 8 Kg | Black</div>
+                <div class="price">₹34,900 <span class="mrp">₹54,300</span><span class="off">-36%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+            <div class="card">
+                <div class="photo">🧺</div>
+                <div class="name">Siemens Front Load Washing Machine | 10 kg | Silver</div>
+                <div class="price">₹43,900 <span class="mrp">₹73,990</span><span class="off">-41%</span></div>
+                <div class="stock">In stock</div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>

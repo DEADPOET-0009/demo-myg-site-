@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Document
+    </title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+            background: #f4f6fa;
+            color: #1c2430;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 20px 20px 50px;
+        }
+
+        .crumbs {
+            margin-bottom: 14px;
+            font-size: 13px;
+            color: #6b7686;
+        }
+
+        .crumbs a {
+            color: #1976d2;
+        }
+
+        .crumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .banner {
+            background: linear-gradient(120deg, #0d47a1, #42a5f5);
+            color: #fff;
+            border-radius: 14px;
+            padding: 30px 32px;
+            margin-bottom: 26px;
+        }
+
+        .banner h1 {
+            font-size: 30px;
+            margin-bottom: 6px;
+        }
+
+        .banner p {
+            opacity: .9;
+        }
+
+        .g0 {
+            background: linear-gradient(135deg, #42a5f5, #1565c0);
+        }
+
+        .g1 {
+            background: linear-gradient(135deg, #ab47bc, #6a1b9a);
+        }
+
+        .g2 {
+            background: linear-gradient(135deg, #26a69a, #00695c);
+        }
+
+        .g3 {
+            background: linear-gradient(135deg, #ffa726, #e65100);
+        }
+
+        .g4 {
+            background: linear-gradient(135deg, #ef5350, #b71c1c);
+        }
+
+        .empty {
+            background: #fff;
+            border: 2px dashed #c5cfdb;
+            border-radius: 12px;
+            padding: 50px;
+            text-align: center;
+            color: #6b7686;
+        }
+
+        .stock {
+            font-size: 13px;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+
+        .phone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .phone-card {
+            background: #fff;
+            border: 1px solid #e3e8ef;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: .2s;
+            display: block;
+        }
+
+        .phone-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 26px rgba(20, 40, 80, .14);
+        }
+
+        .thumb {
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 76px;
+        }
+
+        .p-body {
+            padding: 16px;
+        }
+
+        .p-body h3 {
+            font-size: 17px;
+            margin-bottom: 6px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .btn {
+            display: block;
+            margin-top: 14px;
+            text-align: center;
+            border: 2px solid #0d47a1;
+            color: #0d47a1;
+            border-radius: 8px;
+            padding: 9px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        .phone-card:hover .btn {
+            background: #0d47a1;
+            color: #fff;
+        }
+
+        @media (max-width: 760px) {
+            .banner {
+                padding: 22px;
+            }
+
+            .banner h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <% const gi=brands.indexOf(brand) % 5; %>
+
+            <div class="crumbs">
+                <a href="/">Home</a> &rsaquo; <a href="/mobilephone">Mobile Phones</a> &rsaquo; <%= brand.name %>
+            </div>
+
+            <section class="banner">
+                <h1>
+                    <%= brand.name %> Phones
+                </h1>
+                <p>
+                    <%= brand.phones.length %>
+                        <%= brand.phones.length===1 ? 'model' : 'models' %> available
+                </p>
+            </section>
+
+            <% if (brand.phones.length===0) { %>
+                <div class="empty">No <%= brand.name %> phones added yet.</div>
+                <% } else { %>
+                    <div class="phone-grid">
+                        <% brand.phones.forEach(i=> { %>
+                            <a class="phone-card" href="/mobilephone/<%= brand.name %>/<%= i.name %>">
+                                <div class="thumb g<%= gi %>">&#128241;</div>
+                                <div class="p-body">
+                                    <h3>
+                                        <%= i.name %>
+                                    </h3>
+                                    <div class="price">&#8377;<%= i.price %>
+                                    </div>
+                                    <div class="stock">In stock</div>
+                                    <span class="btn">View details</span>
+                                </div>
+                            </a>
+                            <% }) %>
+                    </div>
+                    <% } %>
+    </div>
+</body>
+
+</html>
