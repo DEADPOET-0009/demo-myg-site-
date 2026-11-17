@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 app.set("view engine", "ejs");
-app.set("views",__dirmame);
+app.set("views",__dirname);
 
 
 app.get("/", (req, res) => {
