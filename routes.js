@@ -1,5 +1,5 @@
 const express = require("express");
-const brands = require("./datas/phones");
+const brands = require("./phones");
 
 const router = express.Router();
 
